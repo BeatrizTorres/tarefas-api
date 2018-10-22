@@ -1,17 +1,15 @@
-
 import knex from "../config/knew";
 
-const tasks = {
+const users = {
   method: "GET",
-  path: "/tasks",
+  path: "/users",
   handler: (request, reply) => {
     return knex
-      .from("tasks")
-      .where({ deleted: false, done: false })
-      .select("oid", "title")
+      .from("users")
+      .select("oid", "email")
       .then(results => reply.response(results))
       .catch(err => console.log(err));
   }
 };
 
-export default tasks;
+export default users;
